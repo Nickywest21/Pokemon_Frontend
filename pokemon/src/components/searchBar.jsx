@@ -6,16 +6,30 @@ function SearchBar({ busqueda, setBusqueda, onBuscar }) {
     };
 
     return (
-        <form className="search-bar" onSubmit={manejarSubmit}>
+        <form
+            className="search-container"
+            onSubmit={manejarSubmit}
+        >
 
-            <input
-                type="text"
-                placeholder="Busca un Pokémon..."
-                value={busqueda}
-                onChange={(e) => setBusqueda(e.target.value)}
-            />
+            <div className="search-input-container">
 
-            <button type="submit">
+                <span className="search-icon">
+                    
+                </span>
+
+                <input
+                    type="text"
+                    placeholder="Busca un Pokémon..."
+                    value={busqueda}
+                    onChange={(e) => setBusqueda(e.target.value)}
+                />
+
+            </div>
+
+            <button
+                type="submit"
+                className="search-button"
+            >
                 Buscar
             </button>
 

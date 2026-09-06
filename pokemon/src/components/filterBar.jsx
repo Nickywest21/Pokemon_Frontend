@@ -20,7 +20,6 @@ const tipos = [
     "fairy"
 ];
 
-
 function FilterBar({ onFiltrar }) {
 
     const [mostrarTodos, setMostrarTodos] = useState(false);
@@ -29,21 +28,19 @@ function FilterBar({ onFiltrar }) {
         ? tipos
         : tipos.slice(0, 5);
 
-
     return (
         <div className="filter-container">
 
-            <div className="filter-bar">
+            <div className="filter-title">
+                Filtrar por tipo
+            </div>
 
-                <button
-                    onClick={() => onFiltrar("normal")}
-                >
-                    Normal
-                </button>
+            <div className="filter-bar">
 
                 {tiposVisibles.map((tipo) => (
                     <button
                         key={tipo}
+                        className="filter-button"
                         onClick={() => onFiltrar(tipo)}
                     >
                         {tipo}
@@ -52,9 +49,8 @@ function FilterBar({ onFiltrar }) {
 
             </div>
 
-
             <button
-                className="load-button"
+                className="show-more-button"
                 onClick={() => setMostrarTodos(!mostrarTodos)}
             >
                 {mostrarTodos
