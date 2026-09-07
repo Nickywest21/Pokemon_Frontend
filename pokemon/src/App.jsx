@@ -24,6 +24,11 @@ function App() {
     const [cargando, setCargando] = useState(false);
     const [error, setError] = useState("");
 
+    const [modoOscuro, setModoOscuro] = useState(() => {
+        const guardado = localStorage.getItem("modoOscuro");
+        return guardado === "true";
+    });
+
 
     // BUSCAR POKÉMON POR NOMBRE
     const buscar = async () => {
@@ -99,10 +104,23 @@ function App() {
     };
 
 
-    return (
-        <div className="app">
+    // ALTERNAR MODO OSCURO
+    const alternarModoOscuro = () => {
+        setModoOscuro((anterior) => {
+            const nuevoValor = !anterior;
+            localStorage.setItem("modoOscuro", nuevoValor);
+            return nuevoValor;
+        });
+    };
 
-            <Header />
+
+    return (
+        <div className={`app${modoOscuro ? " dark" : ""}`}>
+
+            <Header
+                modoOscuro={modoOscuro}
+                alternarModoOscuro={alternarModoOscuro}
+            />
 
             <main>
 
