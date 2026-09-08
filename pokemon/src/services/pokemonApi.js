@@ -2,7 +2,6 @@ const API_URL = "/api";
 
 
 export async function buscarPokemon(nombre) {
-
     const respuesta = await fetch(
         `${API_URL}/pokemon/${nombre.toLowerCase()}`
     );
