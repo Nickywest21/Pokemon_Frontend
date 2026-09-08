@@ -14,7 +14,7 @@ const tipos = [
     "bug",
     "roke",
     "ghost",
-    "phychic",
+    "psychic",
     "dragon",
     "dark",
     "steel",

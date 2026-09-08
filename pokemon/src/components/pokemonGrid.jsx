@@ -1,7 +1,6 @@
 import PokemonCard from "./pokemonCard";
 
-function PokemonGrid({ pokemons }) {
-
+function PokemonGrid({ pokemons, onPokemonClick }) {
     if (pokemons.length === 0) {
         return (
             <p className="no-results">
@@ -12,14 +11,13 @@ function PokemonGrid({ pokemons }) {
 
     return (
         <section className="pokemon-grid">
-
             {pokemons.map((pokemon) => (
                 <PokemonCard
                     key={pokemon.id}
                     pokemon={pokemon}
+                    onClick={onPokemonClick}
                 />
             ))}
-
         </section>
     );
 }

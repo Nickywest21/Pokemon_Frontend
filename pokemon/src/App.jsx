@@ -7,6 +7,7 @@ import Footer from "./sections/footer";
 import SearchBar from "./components/searchBar";
 import FilterBar from "./components/filterBar";
 import PokemonGrid from "./components/pokemonGrid";
+import PokemonModal from "./components/pokemonModal";
 
 import {
     buscarPokemon,
@@ -24,10 +25,44 @@ function App() {
     const [cargando, setCargando] = useState(false);
     const [error, setError] = useState("");
 
+    // Pokémon seleccionado para mostrar el modal
+    const [pokemonSeleccionado, setPokemonSeleccionado] = useState(null);
+
+    // Modo oscuro
     const [modoOscuro, setModoOscuro] = useState(() => {
         const guardado = localStorage.getItem("modoOscuro");
         return guardado === "true";
     });
+
+
+    // MOSTRAR INFORMACIÓN DEL POKÉMON
+    const mostrarPokemon = async (pokemon) => {
+
+        try {
+
+            setCargando(true);
+            setError("");
+
+            // Pedimos nuevamente la información completa
+            // incluyendo habilidades y estadísticas
+            const datos = await buscarPokemon(pokemon.nombre);
+
+            setPokemonSeleccionado(datos);
+
+        } catch (error) {
+
+            console.error(error);
+
+            setError(
+                "No pudimos cargar la información del Pokémon."
+            );
+
+        } finally {
+
+            setCargando(false);
+
+        }
+    };
 
 
     // BUSCAR POKÉMON POR NOMBRE
@@ -106,15 +141,23 @@ function App() {
 
     // ALTERNAR MODO OSCURO
     const alternarModoOscuro = () => {
+
         setModoOscuro((anterior) => {
+
             const nuevoValor = !anterior;
-            localStorage.setItem("modoOscuro", nuevoValor);
+
+            localStorage.setItem(
+                "modoOscuro",
+                nuevoValor
+            );
+
             return nuevoValor;
         });
     };
 
 
     return (
+
         <div className={`app${modoOscuro ? " dark" : ""}`}>
 
             <Header
@@ -171,6 +214,18 @@ function App() {
                     {!cargando && !error && (
                         <PokemonGrid
                             pokemons={pokemons}
+                            onPokemonClick={mostrarPokemon}
+                        />
+                    )}
+
+
+                    {/* MODAL DEL POKÉMON */}
+                    {pokemonSeleccionado && (
+                        <PokemonModal
+                            pokemon={pokemonSeleccionado}
+                            onCerrar={() =>
+                                setPokemonSeleccionado(null)
+                            }
                         />
                     )}
 
