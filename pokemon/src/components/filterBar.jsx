@@ -12,7 +12,7 @@ const tipos = [
     "ground",
     "flying",
     "bug",
-    "roke",
+    "rock",
     "ghost",
     "psychic",
     "dragon",
