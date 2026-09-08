@@ -1,26 +1,6 @@
 import { useState } from "react";
 
 const tipos = [
-<<<<<<< HEAD
-    "normal",
-    "fire",
-    "water",
-    "electric",
-    "grass",
-    "ice",
-    "fighting",
-    "posion",
-    "ground",
-    "flying",
-    "bug",
-    "rock",
-    "ghost",
-    "psychic",
-    "dragon",
-    "dark",
-    "steel",
-    "fairy"
-=======
   { label: "Normal", valor: "normal" },
   { label: "Fuego", valor: "fire" },
   { label: "Agua", valor: "water" },
@@ -39,7 +19,6 @@ const tipos = [
   { label: "Siniestro", valor: "dark" },
   { label: "Acero", valor: "steel" },
   { label: "Hada", valor: "fairy" }
->>>>>>> Nicky
 ];
 
 function FilterBar({ onFiltrar }) {
