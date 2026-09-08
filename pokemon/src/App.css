@@ -110,6 +110,16 @@ body {
 
 /* ===== TOGGLE BUTTON: shared shape ===== */
 
+.nav-item-toggle {
+    position: relative;
+}
+
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .theme-toggle {
     width: 34px;
     height: 34px;
@@ -132,6 +142,19 @@ body {
 
 .app.dark .theme-toggle:focus-visible {
     outline-color: var(--blanco);
+}
+
+.menu-caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--blanco);
+    transition: transform 0.25s ease;
+}
+
+.menu-caret--abierto {
+    transform: rotate(180deg);
 }
 
 /* ===== TOGGLE BUTTON: Poke Ball (default / light mode) ===== */
@@ -205,6 +228,116 @@ body {
     border: 2px solid #1a1a1a;
     border-radius: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* ===== MENÚ MÓVIL (dropdown desde el botón) ===== */
+
+@keyframes menuDesplegar {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+
+    min-width: 160px;
+
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+
+    background-color: var(--superficie);
+    border: 2px solid var(--borde);
+    border-radius: 14px;
+
+    box-shadow: 0 10px 25px rgba(28, 28, 28, 0.15);
+
+    z-index: 20;
+
+    animation: menuDesplegar 0.18s ease-out;
+}
+
+.mobile-menu::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 14px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--superficie);
+    border-left: 2px solid var(--borde);
+    border-top: 2px solid var(--borde);
+    transform: rotate(45deg);
+}
+
+.mobile-menu li + li {
+    margin-top: 4px;
+}
+
+.mobile-menu-theme-item {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--borde);
+}
+
+.mobile-menu a,
+.mobile-menu-theme-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    color: var(--texto);
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.mobile-menu-theme-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font: inherit;
+}
+
+.mobile-menu a:hover,
+.mobile-menu-theme-btn:hover {
+    background-color: var(--acento-claro);
+    color: var(--acento-oscuro);
+}
+
+.app.dark .mobile-menu {
+    background-color: #232323;
+    border-color: #3a3a3a;
+}
+
+.app.dark .mobile-menu::before {
+    background-color: #232323;
+    border-color: #3a3a3a;
+}
+
+.app.dark .mobile-menu-theme-item {
+    border-color: #3a3a3a;
+}
+
+.app.dark .mobile-menu a,
+.app.dark .mobile-menu-theme-btn {
+    color: #eaeaea;
+}
+
+.app.dark .mobile-menu a:hover,
+.app.dark .mobile-menu-theme-btn:hover {
+    background-color: #3a3a3a;
+    color: #fff;
 }
 
 .hero {
@@ -706,7 +839,11 @@ body {
         padding: 15px 20px;
     }
 
-    .nav a {
+    .logo-img {
+        height: 42px;
+    }
+
+    .nav-item-link {
         display: none;
     }
 
