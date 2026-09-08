@@ -2,22 +2,23 @@ import { useState } from "react";
 
 const tipos = [
     "normal",
-    "fire",
-    "water",
-    "electric",
-    "grass",
-    "ice",
-    "fighting",
-    "poison",
-    "ground",
-    "flying",
-    "bug",
-    "rock",
-    "ghost",
-    "dragon",
-    "dark",
-    "steel",
-    "fairy"
+    "fuego",
+    "agua",
+    "eléctrico",
+    "planta",
+    "hielo",
+    "lucha",
+    "veneno",
+    "tierra",
+    "volador",
+    "bicho",
+    "piedra",
+    "fantasma",
+    "psíquico",
+    "dragón",
+    "siniestro",
+    "acero",
+    "hada"
 ];
 
 function FilterBar({ onFiltrar }) {
